@@ -9,12 +9,12 @@ export function initDeck() {
   // Ajouter les diamants, l'or, l'argent, les tissus, les épices, le cuir et les chameaux
   // Retourner le tableau remplis
   const _deck=[]
-  for(let i=0;i<6;i++) _deck.push("Diamonds")
+  for(let i=0;i<6;i++) _deck.push("diamonds")
   for(let i=0;i<6;i++) _deck.push("gold")
   for(let i=0;i<6;i++) _deck.push("silver")
   for(let i=0;i<8;i++) _deck.push("cloth")
   for(let i=0;i<8;i++) _deck.push("spice")
-  for(let i=0;i<10;i++) _deck.push("spice")
+  for(let i = 0; i < 10; i++) _deck.push("leather")
   for(let i=0;i<11-3 ;i++) _deck.push("camel")
 
   return shuffle(_deck)
@@ -98,4 +98,9 @@ export function createGame(name) {
   return game
 
   return {}
+}
+export function listGames(){
+
+const gameslist=db.getGames()
+return gameslist
 }
