@@ -40,3 +40,33 @@ export function saveGame(game) {
 export function clear() {
   fs.rmSync(DATABASE_FILE)
 }
+export function deleteGame(id){
+const games=getGames()
+
+const gameIndex=games.findIndex(g=> g.id==id)
+if(gameIndex>=0){
+  console.log("here"+gameIndex)
+  games.splice(gameIndex,1)
+ 
+}
+
+fs.writeFileSync(DATABASE_FILE, JSON.stringify(games))
+ return games
+}
+export function getGame(gameId,payerId){
+ 
+  const games=getGames()
+  const game=games.find(g=> g.id==gameId)
+  if(game){
+    
+      let inf=[]
+      inf.push(game._players[payerId])
+    
+      game._players=inf
+  
+  }
+  
+   
+   return game
+  
+}

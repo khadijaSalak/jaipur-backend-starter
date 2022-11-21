@@ -104,3 +104,9 @@ export function listGames(){
 const gameslist=db.getGames()
 return gameslist
 }
+
+export function deleteGames(game){
+
+  const gamedeleted=db.deleteGame(game)
+  return gamedeleted
+}
