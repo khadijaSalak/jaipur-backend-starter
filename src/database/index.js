@@ -56,9 +56,11 @@ fs.writeFileSync(DATABASE_FILE, JSON.stringify(games))
 export function getGame(gameId,payerId){
  
   const games=getGames()
+
   const game=games.find(g=> g.id==gameId)
+ 
   if(game){
-    
+      
       let inf=[]
       inf.push(game._players[payerId])
     

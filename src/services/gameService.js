@@ -110,3 +110,22 @@ export function deleteGames(game){
   const gamedeleted=db.deleteGame(game)
   return gamedeleted
 }
+export function showGame(req){
+ 
+
+  const game=db.getGame(req.params.gameId,req.params.playerId)
+  const gameres = {
+    "currentPlayerIndex":game.currentPlayerIndex,
+    "name":game.name,
+    "id":game.id,
+    "market":game.market,
+    "tokens":game.tokens,
+    "hand":game._players[game.currentPlayerIndex].hand,
+    "camelsCount":game._players.camelsCount,
+    "winnerIndex":game.winnerId,
+    "bonusTokens":game._bonusTokens
+
+  }
+  return gameres
+
+}

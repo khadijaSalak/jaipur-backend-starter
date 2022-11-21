@@ -39,14 +39,11 @@ router.delete("/:id",function(req,res){
 })
 router.get("/:gameId/players/:playerId",function(req,res){
 
-     const gameInfo=db.getGame(req.params.gameId,req.params.playerId)
-      console.log(typeof gameInfo)
+     const gameInfo=gameService.showGame(req)
+      console.log(gameInfo)
      if(gameInfo){
-          
-         
-          res.json(Object.keys(gameInfo).map(key => {
-            
-            return { [key]: gameInfo[key]}}))
+        
+          res.json(gameInfo)
           
      }else{
         res.status(404).send("game not found")
