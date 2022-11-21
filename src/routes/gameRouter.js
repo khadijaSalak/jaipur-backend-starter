@@ -18,16 +18,17 @@ router.post("/", function (req, res) {
   res.status(201).json({ id: newGame.id, name: newGame.name })
 })
 
-router.get("/",function(req,res){
+router.get("/",function(req,res) {
 
-//res.status(200).json([{name:"test"}])
-const newGame = gameService.listGames()
-//console.log(newGame.forEach(game => game.name))
-//res.status(200).json([{name:newGame[0].name}])
+  //res.status(200).json([{name:"test"}])
+  const newGame = gameService.listGames()
+  //console.log(newGame.forEach(game => game.name))
+  //res.status(200).json([{name:newGame[0].name}])
 
-res.status(200).json(newGame.map((game)=>({id:game.id, name:game.name})))
+  res.status(200).json(newGame.map((game)=>({id:game.id, name:game.name})))
 })
-router.delete("/:id",function(req,res){
+
+router.delete("/:id",function(req,res) {
   
     //const del=gameService.deleteGames(req.params.id)
    console.log(req.params.id)
@@ -37,6 +38,7 @@ router.delete("/:id",function(req,res){
      
    
 })
+
 router.get("/:gameId/players/:playerId",function(req,res){
 
      const gameInfo=db.getGame(req.params.gameId,req.params.playerId)
@@ -53,4 +55,19 @@ router.get("/:gameId/players/:playerId",function(req,res){
      }
 
 })
+
+// Take-good
+router.post("/:gameId/players/:playerId/take-good",function (req, res) {
+
+  const currentGame = db.getGame(req.params.gameId, req.params.playerId)
+       
+  if (currentGame) {
+    
+  }   
+  else {
+    res.status(404).send("game not found")
+  }
+
+})
+
 export default router

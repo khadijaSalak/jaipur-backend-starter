@@ -40,14 +40,15 @@ export function saveGame(game) {
 export function clear() {
   fs.rmSync(DATABASE_FILE)
 }
-export function deleteGame(id){
-const games=getGames()
 
-const gameIndex=games.findIndex(g=> g.id==id)
-if(gameIndex>=0){
-  console.log("here"+gameIndex)
-  games.splice(gameIndex,1)
- 
+export function deleteGame(id) {
+  const games = getGames()
+
+  const gameIndex=games.findIndex(g=> g.id==id)
+  if(gameIndex>=0){
+    console.log("here"+gameIndex)
+    games.splice(gameIndex,1)
+  
 }
 
 fs.writeFileSync(DATABASE_FILE, JSON.stringify(games))
