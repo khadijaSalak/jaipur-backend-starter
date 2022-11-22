@@ -66,7 +66,7 @@ export function createGame(name) {
   // Mettre les chameaux des mains des joueurs dans leurs enclos avec la fonction précédente
   // Retourner la partie 
   const newdeck=initDeck()
-  const market=["camel", "camel", "camel", drawCards(newdeck), drawCards(newdeck)]
+  const market=["camel", "camel", "camel", ...drawCards(newdeck,2)]
   // créer une fonction getgames
   const game = {
     id: db.getGames().length + 1,
